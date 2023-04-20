@@ -854,7 +854,7 @@ if __name__ == "__main__":
         "--input_dir",
         help="The path to the directory containing the offline training data",
         type=str,
-        default="E:/22-23 Term 2/DDA2081/New_SMARTS/fanta-code-main/offline-datasets-master/offline_dataset",
+        default="offline-datasets-master/offline_dataset",
     )
     parser.add_argument(
         "--output_suffix",
