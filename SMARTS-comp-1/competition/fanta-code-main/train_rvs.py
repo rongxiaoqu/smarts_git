@@ -163,6 +163,7 @@ def train(input_path, output_suffix, conservative_weight):
 
 
         filename = scenario_path / (f"Agent-history-vehicle-{1}.pkl")
+        print(scenario_path)
         with open(filename, 'rb') as f:
             contents = pickle.load(f)
 
