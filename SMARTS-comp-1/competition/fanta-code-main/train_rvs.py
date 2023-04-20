@@ -147,14 +147,14 @@ def train(input_path, output_suffix, conservative_weight):
     straight_files = []
 
 
-        # filename = scenario_path / (f"Agent-history-vehicle-{1}.pkl")
+    # filename = scenario_path / (f"Agent-history-vehicle-{1}.pkl")
 
-        filename = "Agent-history-vehicle-1.pkl"
-        print(scenario_path)
-        with open(filename, 'rb') as f:
-            contents = pickle.load(f)
+    filename = "Agent-history-vehicle-1.pkl"
+    print(scenario_path)
+    with open(filename, 'rb') as f:
+        contents = pickle.load(f)
 
-        print(contents)
+    print(contents)
 
 
     for sc_index, scenario in tqdm(enumerate(scenarios[0:n_scenarios])):
