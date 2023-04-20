@@ -6,6 +6,7 @@ import glob
 import re
 import numpy as np
 import os
+import pickle
 import sys
 import shutil
 import yaml
@@ -27,12 +28,12 @@ import torch
 import math
 
 # designed obs and rew
-from env_wrapper import EnvWrapper, SingleAgentWrapper
+# from env_wrapper import EnvWrapper, SingleAgentWrapper
 
 # To import submission folder
 sys.path.insert(0, str(Path(__file__).parents[1]))
 
-from submission.utility import (
+from eval_code.utility import (
     goal_region_reward,
     get_goal_layer,
     get_trans_coor,
@@ -107,6 +108,7 @@ def train(input_path, output_suffix, conservative_weight):
     d3rlpy.seed(313)
 
     # Get config parameters.
+    # print(Path(__file__).absolute().parents[0])
     train_config = load_config(Path(__file__).absolute().parents[0] / "config.yaml")
 
     n_steps = train_config["n_steps"]
@@ -129,7 +131,7 @@ def train(input_path, output_suffix, conservative_weight):
     if n_scenarios == "max" or n_scenarios > len(scenarios):
         n_scenarios = len(scenarios)  # 2
 
-    # # init wandb
+    # init wandb
     # wandb.init(project='mlp_cql_simple')
 
     wash_data = True
@@ -160,7 +162,6 @@ def train(input_path, output_suffix, conservative_weight):
         n_vehicles = len(vehicle_ids)
 
 
-
         filename = scenario_path + f"Agent-history-vehicle-{1}.pkl"
         with open(filename, 'rb') as f:
             contents = pickle.load(f)
@@ -168,15 +169,18 @@ def train(input_path, output_suffix, conservative_weight):
         print(contents)
 
 
+
         for id in vehicle_ids[0:n_vehicles]:
             if sc_index % 20 == 0:
                 print(f"Adding data for vehicle id {id} in scenario {scenario}.")
             with open(
                     scenario_path / (f"Agent-history-vehicle-{id}.pkl"),
-                    "rb",
-            ) as f:
-                vehicle_data = pickle.load(f)
+                    "rb") as f:
+                    vehicle_data = pickle.load(f)
+                    print("added data")
             image_names = list()
+
+            print("after added data")
 
             for filename in os.listdir(scenario_path):
                 if filename.endswith(f"-{id}.png"):
@@ -189,6 +193,7 @@ def train(input_path, output_suffix, conservative_weight):
 
             threshold = 3
             if wash_data:
+                print("washing data")
                 dheadings = []
                 raw_headings = []
 
@@ -859,7 +864,7 @@ if __name__ == "__main__":
         "--input_dir",
         help="The path to the directory containing the offline training data",
         type=str,
-        default="../../../../SMARTS/competition/offline_datasets_1006/",
+        default="offline-datasets-master/offline_dataset",
     )
     parser.add_argument(
         "--output_suffix",
