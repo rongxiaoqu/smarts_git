@@ -152,6 +152,7 @@ def train(input_path, output_suffix, conservative_weight):
     filename = "offline-datasets-master/us101_candid_list.pkl"
     # print(scenario_path)
     with open(filename, 'rb') as f:
+        print(f)
         contents = pickle.load(f)
 
     print(contents)
