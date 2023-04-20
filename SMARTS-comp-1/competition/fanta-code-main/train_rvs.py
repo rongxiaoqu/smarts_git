@@ -161,7 +161,13 @@ def train(input_path, output_suffix, conservative_weight):
 
 
 
-        
+        filename = scenario_path + f"Agent-history-vehicle-{1}.pkl"
+        with open(filename, 'rb') as f:
+            contents = pickle.load(f)
+
+        print(contents)
+
+
         for id in vehicle_ids[0:n_vehicles]:
             if sc_index % 20 == 0:
                 print(f"Adding data for vehicle id {id} in scenario {scenario}.")
