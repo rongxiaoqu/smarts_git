@@ -145,6 +145,18 @@ def train(input_path, output_suffix, conservative_weight):
     episode_terminals = list()
     turning_files = []
     straight_files = []
+
+
+        # filename = scenario_path / (f"Agent-history-vehicle-{1}.pkl")
+
+        filename = "Agent-history-vehicle-1.pkl"
+        print(scenario_path)
+        with open(filename, 'rb') as f:
+            contents = pickle.load(f)
+
+        print(contents)
+
+
     for sc_index, scenario in tqdm(enumerate(scenarios[0:n_scenarios])):
         if sc_index % 10 == 0:
             print(f"Processing scenario {scenario}.")
@@ -161,15 +173,6 @@ def train(input_path, output_suffix, conservative_weight):
 
         n_vehicles = len(vehicle_ids)
 
-
-        # filename = scenario_path / (f"Agent-history-vehicle-{1}.pkl")
-
-        filename = "Agent-history-vehicle-1.pkl"
-        print(scenario_path)
-        with open(filename, 'rb') as f:
-            contents = pickle.load(f)
-
-        print(contents)
 
 
 
