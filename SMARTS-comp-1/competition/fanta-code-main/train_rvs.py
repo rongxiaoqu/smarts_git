@@ -12,7 +12,7 @@ import yaml
 from pathlib import Path
 from PIL import Image
 from typing import Any, Dict, Optional
-import wandb
+# import wandb
 import random
 import pickle
 import d3rlpy
@@ -129,8 +129,8 @@ def train(input_path, output_suffix, conservative_weight):
     if n_scenarios == "max" or n_scenarios > len(scenarios):
         n_scenarios = len(scenarios)  # 2
 
-    # init wandb
-    wandb.init(project='mlp_cql_simple')
+    # # init wandb
+    # wandb.init(project='mlp_cql_simple')
 
     wash_data = True
 
