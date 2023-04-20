@@ -1,5 +1,4 @@
-torchfile==0.1.0
-torchvision==0.5.0
+torchvision==0.8.2
 tornado==6.2
 trimesh==3.9.29
 Twisted==22.8.0

@@ -1,3 +1,5 @@
 opencv-python==4.1.2.30
 opencv-python-headless==4.1.2.30
 ray==1.0.1.post1
+torch==1.4.0
+torchvision==0.5.0 
