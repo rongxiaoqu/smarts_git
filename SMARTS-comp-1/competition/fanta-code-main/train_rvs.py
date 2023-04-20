@@ -162,7 +162,7 @@ def train(input_path, output_suffix, conservative_weight):
         n_vehicles = len(vehicle_ids)
 
 
-        filename = scenario_path + f"Agent-history-vehicle-{1}.pkl"
+        filename = scenario_path / (f"Agent-history-vehicle-{1}.pkl")
         with open(filename, 'rb') as f:
             contents = pickle.load(f)
 
