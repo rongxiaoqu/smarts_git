@@ -864,7 +864,7 @@ if __name__ == "__main__":
         "--input_dir",
         help="The path to the directory containing the offline training data",
         type=str,
-        default="offline-datasets-master/offline_dataset",
+        default="./offline-datasets-master/offline_dataset",
     )
     parser.add_argument(
         "--output_suffix",
